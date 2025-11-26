@@ -30,25 +30,3 @@
     }
 
 }
-
-.results {
-    background-color: var(--Neutral800);
-    padding: .5rem;
-    list-style-type: none;
-    border-radius: 5px;
-    margin: 0;
-
-    li {
-        padding: .5rem;
-        border-radius: 5px;
-        border: 1px solid transparent;
-
-
-    }
-
-    li:hover {
-        background-color: var(--Neutral700);
-        cursor: pointer;
-        border: 1px solid var(--Neutral600);
-    }
-}
