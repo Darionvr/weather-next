@@ -12,10 +12,9 @@ import TodayForecast from "./ui/today-forecast";
 export default function Home() {
 
   const [selectedPlace, setSelectedPlace] = useState<Places | null>(null);
-  const [weather, setWeather] = useState<WeatherData| null>(null);
-  console.log(weather)
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+  console.log(weather);
 
-  
   return (
     <div className={styles.page}>
       <header>
@@ -23,15 +22,15 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <h1>
-          How's the sky looking today?
+          ¿Cómo está el cielo hoy?
         </h1>
-        <SearchBar 
+        <SearchBar
           onPlaceSelected={(place: Places, data: WeatherData) => {
             setSelectedPlace(place);
             setWeather(data);
           }}
         />
-     {selectedPlace && weather && (
+        {selectedPlace && weather && (
           <>
             <TodayForecast place={selectedPlace} data={weather} />
             <DailyForecast data={weather} />

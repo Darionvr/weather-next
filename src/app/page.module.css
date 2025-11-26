@@ -3,4 +3,17 @@
   min-height: 100vh;
   color: var(--Neutral0);
   font-family: var(--font-bricolage);
+  display: grid;
+  padding-block: 2rem;
+  padding-inline: 1rem;
+  justify-content: center;
+
+}
+
+.main{
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
 }

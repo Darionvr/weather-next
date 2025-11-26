@@ -1,6 +1,6 @@
 'use server'
 
-import { Places, WeatherData } from "./definitions";
+import { Places } from "./definitions";
 import { placeSchema } from "./validation";
 import { fetchWeatherApi } from "openmeteo";
 
@@ -49,14 +49,10 @@ export async function searchPlacesAction(prevState: State, formData: FormData): 
     longitude: r.longitude
   }));
 
-  console.log("Search results:", results);
-
   return { results };
 }
 
 //Clima del lugar seleccionado según la documentación de API Open Meteo
-
-
 
 export async function getWeather(lat: number, lon: number) {
 
@@ -65,7 +61,7 @@ export async function getWeather(lat: number, lon: number) {
     longitude: lon,
     daily: ["temperature_2m_max", "temperature_2m_min", "weather_code"],
     hourly: "temperature_2m",
-    current: ["temperature_2m", "relative_humidity_2m", "apparent_temperature", "is_day", "precipitation", "wind_speed_10m"],
+    current: ["temperature_2m", "relative_humidity_2m", "apparent_temperature", "is_day", "precipitation", "wind_speed_10m", "weather_code"],
     timezone: "auto",
   };
   const url = "https://api.open-meteo.com/v1/forecast";
@@ -103,6 +99,7 @@ export async function getWeather(lat: number, lon: number) {
       is_day: current.variables(3)!.value(),
       precipitation: current.variables(4)!.value(),
       windspeed: current.variables(5)!.value(),
+      weather_code: current.variables(6)!.value(),
     },
     hourly: {
       time: Array.from(
@@ -120,6 +117,5 @@ export async function getWeather(lat: number, lon: number) {
       temperature_2m_min: Array.from(daily.variables(1)!.valuesArray() || []),
     },
   };
-
-
 }
+

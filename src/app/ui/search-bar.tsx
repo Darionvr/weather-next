@@ -2,9 +2,10 @@
 
 import { useActionState, useState } from "react";
 import { Places } from "../lib/definitions";
-import { getWeather, searchPlacesAction } from "../lib/searchAction";
+import { getWeather, searchPlacesAction } from "../lib/actions";
 import { SearchError } from "./search-error";
 import { WeatherData } from "../lib/definitions";
+import styles from '@/app/ui/styles/searchbar.module.css';
 
 const initialState: { results: Places[]; error?: string } = { results: [] };
 
@@ -27,17 +28,17 @@ const SearchBar = ({ onPlaceSelected }: SearchBarProps) => {
     return (
         <div>
 
-            <form action={formAction}>
+            <form action={formAction} className={styles.form}>
                 <input
                     type="text"
                     name="place"
                     placeholder='Ingresa un lugar'
                     defaultValue={formState.results[0]?.name ?? ''} />
                 <SearchError error={formState.error ? [formState.error] : undefined} />
-                <button> Search</button>
+                <button onClick={ () => setShowResults(true)}> Search</button>
 
                 {showResults && formState.results.length > 0 && (
-                    <ul>
+                    <ul className={styles.results}>
                         {formState.results.map((place, index) => (
                             <li key={index} onClick={() => handleSelectPlace(place)} >
                                 {place.name} {place.country && `(${place.country})`} {place.admin1 && `- ${place.admin1}`}

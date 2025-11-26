@@ -3,6 +3,7 @@ export type Places = {
     name: string;
     country: string;
     admin1: string;
+    admin2: string;
     latitude: number;
     longitude:number;
 
@@ -18,7 +19,9 @@ export type WeatherData = {
     is_day: number,
     windspeed: number,
     time: Date,
-    precipitation: number
+    precipitation: number,
+    weather_code:number
+
   },
    hourly?: {
     time: Date[];

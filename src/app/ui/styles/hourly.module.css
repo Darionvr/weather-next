@@ -1,0 +1,27 @@
+.cardContainer {
+    display: grid;
+    padding: 1rem;
+    background-color: var(--Neutral800);
+    gap: 1rem;
+    border-radius: 8px;
+    font-family: var(--font-dm-sans);
+
+}
+
+.card {
+    background-color: var(--Neutral700);
+    padding-inline: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 1px solid var(--Neutral600);
+
+    div {
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        max-width: 40px;
+    }
+}

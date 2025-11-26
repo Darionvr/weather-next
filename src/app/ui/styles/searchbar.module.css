@@ -1,0 +1,54 @@
+.form {
+    display: grid;
+    gap: .5rem;
+    margin: auto;
+
+}
+
+.form input {
+    background-color: var(--Neutral800);
+    border: none;
+    color: var(--Neutral0);
+    padding: .8rem;
+    border-radius: 5px;
+    font-family: var(--font-dm-sans);
+    font-size: 1rem;
+}
+
+.form button {
+    background-color: var(--Blue500);
+    padding: 1rem;
+    border: none;
+    color: var(--Neutral0);
+    font-family: var(--font-dm-sans);
+    border-radius: 5px;
+    font-size: 1rem;
+
+    &:hover{
+        background-color: var(--Blue700);
+        cursor: pointer;
+    }
+
+}
+
+.results {
+    background-color: var(--Neutral800);
+    padding: .5rem;
+    list-style-type: none;
+    border-radius: 5px;
+    margin: 0;
+
+    li {
+        padding: .5rem;
+        border-radius: 5px;
+        border: 1px solid transparent;
+
+
+    }
+
+    li:hover {
+        background-color: var(--Neutral700);
+        cursor: pointer;
+        border: 1px solid var(--Neutral600);
+    }
+}
