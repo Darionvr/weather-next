@@ -22,7 +22,7 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <h1>
-          ¿Cómo está el cielo hoy?
+          El clima en tu ciudad
         </h1>
         <SearchBar
           onPlaceSelected={(place: Places, data: WeatherData) => {
