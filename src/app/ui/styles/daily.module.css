@@ -1,6 +1,7 @@
 .section{
     text-align: left;
      font-family: var(--font-dm-sans);
+  
 
      h2{
         font-size: 1rem;
@@ -21,7 +22,7 @@
     padding: .5rem;
     background-color: var(--Neutral800);
     width: 100%;
-    max-width: 90px;
+    max-width: 80px;
     border-radius: 8px;
     font-size: 1rem;
     border: 2px solid var(--Neutral700);
@@ -37,4 +38,11 @@
     img{
         width: 50px;
     }
+}
+
+@media (min-width:768px) {
+    .section{
+           grid-area: daily;
+    }
+    
 }

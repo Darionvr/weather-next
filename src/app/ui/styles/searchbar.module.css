@@ -1,8 +1,18 @@
+.section {
+    display: grid;
+    gap: .5rem;
+}
+
 .form {
     display: grid;
     gap: .5rem;
     margin: auto;
+    width: 100%;
 
+    div {
+        display: grid;
+        gap: .5rem;
+    }
 }
 
 .form input {
@@ -16,6 +26,8 @@
 }
 
 .form button {
+    display: flex;
+    align-items: center;
     background-color: var(--Blue500);
     padding: 1rem;
     border: none;
@@ -23,10 +35,31 @@
     font-family: var(--font-dm-sans);
     border-radius: 5px;
     font-size: 1rem;
+    height: 46px;
 
-    &:hover{
+    &:hover {
         background-color: var(--Blue700);
         cursor: pointer;
+    }
+
+}
+
+@media (min-width:768px) {
+    .section {
+
+        grid-area: form;
+        width: fit-content;
+        margin: auto;
+    }
+
+    .form {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .form div {
+        width: 400px;
     }
 
 }

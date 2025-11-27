@@ -5,6 +5,7 @@
     margin: auto;
     justify-content: center;
     width: 100%;
+   
 }
 
 .header {
@@ -72,5 +73,17 @@
     p:last-child {
         font-size: 1.5rem;
         margin: 0;
+    }
+}
+
+@media (min-width:768px){
+    .cardContainer{
+        grid-template-columns:  repeat(4, 1fr);
+        grid-template-rows: auto;
+        margin: unset;
+    }
+    .section{
+        height: min-content;
+        grid-area: today;
     }
 }

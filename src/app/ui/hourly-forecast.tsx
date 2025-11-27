@@ -28,9 +28,9 @@ export const HourlyForecast = ({ data }: { data: WeatherData }) => {
     }));
 
   return (
-    <section>
-      <h2> Pronóstico por horas</h2>
+    <section className={styles.section}>
       <div className={styles.cardContainer}>
+      <h2> Pronóstico por horas</h2>
         {nextHours.map(({ t, i }) => (
           <div key={i} className={styles.card}>
             <div>

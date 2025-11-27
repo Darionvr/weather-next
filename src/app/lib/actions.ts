@@ -12,10 +12,9 @@ type State = {
 // Búsqueda en la barra de búsqueda principal
 export async function searchPlacesAction(prevState: State, formData: FormData): Promise<State> {
 
-  const query = formData.get("place");
+  const query = formData.get("query");
 
-  // Validación con Zod
-  const validation = placeSchema.safeParse(query);
+   const validation = placeSchema.safeParse(query);
 
   if (!validation.success) {
     return {
@@ -25,10 +24,8 @@ export async function searchPlacesAction(prevState: State, formData: FormData): 
   }
 
 
-  // Si pasa la validación, llamar a la API
-
   const res = await fetch(
-    `https://geocoding-api.open-meteo.com/v1/search?name=${validation.data}&count=4&language=en&format=json`
+    `https://geocoding-api.open-meteo.com/v1/search?name=${query}&count=4&language=en&format=json`
   );
 
   if (!res.ok) {

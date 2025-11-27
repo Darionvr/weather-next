@@ -33,3 +33,9 @@
     transform: translateX(100%);
   }
 }
+
+@media (min-width:768px){
+.dropdown{
+  max-width: 400px;
+}
+}
