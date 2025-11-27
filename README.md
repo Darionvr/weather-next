@@ -1,35 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 📌 Definición del proyecto
 
-## Getting Started
+**Aplicación de clima desarrollada con Next.js 16 y React 18.**  
+El proyecto integra la **API de Open-Meteo** para la búsqueda de lugares y la **API de pronóstico meteorológico** para obtener datos actuales, horarios y diarios. La arquitectura aprovecha las nuevas características de **Server Components** y el hook `useActionState` para manejar formularios y estados de búsqueda de manera declarativa.
 
-First, run the development server:
+### 🔹 Características técnicas
+- **Next.js 16** con soporte para Server Actions y Suspense.  
+- **React `useActionState`** para gestionar el estado del formulario de búsqueda y mostrar loaders (`isPending`) de forma automática.  
+- **Debounce en el input** para optimizar peticiones a la API y evitar llamadas innecesarias.  
+- **Dropdown de resultados** con renderizado condicional y control de visibilidad (`showResults`) para mejorar la experiencia de usuario.  
+- **Skeleton loaders** implementados con Suspense para indicar carga de datos en tiempo real.  
+- **CSS Grid con áreas definidas** (`title`, `form`, `today`, `daily`, `hourly`) para organizar la interfaz y lograr un diseño responsivo y claro.  
+- **Conexión a APIs externas**:
+  - Geocoding: búsqueda de lugares por nombre.  
+  - Weather: datos de temperatura, humedad, viento y pronósticos horarios/diarios.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 🔹 Flujo de uso
+1. El usuario ingresa un lugar en la barra de búsqueda.  
+2. El formulario dispara la **Server Action** (`searchPlacesAction`) que consulta la API de geocoding.  
+3. Los resultados se muestran en un dropdown interactivo.  
+4. Al seleccionar un lugar, se consulta la API de clima y se renderizan los datos en las secciones correspondientes.  
+5. El dropdown se oculta automáticamente tras la selección y se reactiva en nuevas búsquedas.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
