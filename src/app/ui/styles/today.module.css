@@ -15,6 +15,7 @@
     text-align: center;
     padding: 2rem;
     border-radius: 20px;
+    width: fit-content;
 
     p:first-child {
         font-weight: 700;
@@ -77,6 +78,10 @@
 }
 
 @media (min-width:768px){
+.header {
+    width:auto;
+}
+
     .cardContainer{
         grid-template-columns:  repeat(4, 1fr);
         grid-template-rows: auto;
