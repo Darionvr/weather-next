@@ -8,7 +8,8 @@ import { WeatherData } from "../lib/definitions";
 import styles from '@/app/ui/styles/searchbar.module.css';
 import SkeletonDropdown from "./skeleton";
 import ResultsList from "./result-list";
-
+import { useDebouncedCallback } from 'use-debounce';
+import { startTransition } from "react";
 
 type SearchBarProps = {
     onPlaceSelected: (place: Places, data: WeatherData) => void;
@@ -22,13 +23,20 @@ const SearchBar = ({ onPlaceSelected }: SearchBarProps) => {
     const [formState, formAction, isPending] = useActionState(searchPlacesAction, initialState);
     const [query, setQuery] = useState(""); // para guardar el texto del input y controlar los resultados
 
-
     const handleSelectPlace = async (place: Places) => {
         const data = await getWeather(place.latitude, place.longitude);
         onPlaceSelected(place, data); // enviamos al padre
-
         setShowResults(false);  // Oculta el dropdown con los resultados
     };
+
+    const debouncedSearch = useDebouncedCallback((q: string) => {
+        const fd = new FormData();
+        fd.append("query", q);
+        startTransition(() => {
+            formAction(fd);
+        });
+    }, 300);
+
 
     useEffect(() => {
         if (query.length === 0) {
@@ -37,8 +45,13 @@ const SearchBar = ({ onPlaceSelected }: SearchBarProps) => {
         } else if (isPending) {
             setShowResults(true); // reactiva si hay resultados
         }
-
     }, [query, isPending]);
+
+    useEffect(() => {
+        if (query.length > 0) {
+            debouncedSearch(query);
+        }
+    }, [query]);
 
     return (
 
@@ -56,17 +69,13 @@ const SearchBar = ({ onPlaceSelected }: SearchBarProps) => {
                         <ResultsList results={formState.results} onSelect={handleSelectPlace} />
                     )}
                 </div>
-
                 <button> Buscar</button>
             </form>
 
             {isPending && <SkeletonDropdown />}
 
-
             <SearchError error={formState.error ? [formState.error] : undefined} />
-
         </section>
-
     )
 }
 
