@@ -7,7 +7,7 @@
   padding-block: 2rem;
   padding-inline: 1rem;
   justify-content: center;
-  
+  box-sizing: border-box;
 
 }
 
